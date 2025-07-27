@@ -1,14 +1,25 @@
 <% layout("/layouts/boilerplate")%>
 <body>
     <H2>ALL LISTINGS</H2>
-    <!-- <form action="/listings/new" method="GET">
-        <button>Create New Listing</button>
-    </form> -->
-    <ul>
-        <% for(let listing of allListings){ %>
-            <li><a href="/listings/<%= listing._id %>"> <%= listing.title %></a></li>
-        
+
+    <div class="row">
+    <% for (let listing of allListings) { %>
+        <div class="card" style="width: 20rem;">
+            <% if (typeof listing.image === "object" && listing.image.url) { %>
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="...">
+            <% } else { %>
+                <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="...">
+            <% } %>
+            <div class="card-body">
+                <p class="card-text">
+                    <%= listing.title %>
+                    <br>
+                    &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
+                </p>
+            </div>
+        </div>
     <% } %>
-    </ul>
+</div>
+
 </body>
 
