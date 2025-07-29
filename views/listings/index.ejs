@@ -2,24 +2,30 @@
 <body>
     <H2>ALL LISTINGS</H2>
 
-    <div class="row">
-    <% for (let listing of allListings) { %>
-        <div class="card" style="width: 20rem;">
-            <% if (typeof listing.image === "object" && listing.image.url) { %>
-                <img src="<%= listing.image.url %>" class="card-img-top" alt="...">
-            <% } else { %>
-                <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="...">
-            <% } %>
-            <div class="card-body">
-                <p class="card-text">
-                    <%= listing.title %>
-                    <br>
-                    &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
-                </p>
-            </div>
+    <!--
+<form>
+-->
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+  <% for (let listing of allListings) { %>
+    <a href="/listings/<%=listing._id%>" style="text-decoration: none;"> 
+    <div class="card col" >
+      <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;" />
+       <div class="card-img-overlay">
         </div>
-    <% } %>
+      <div class="card-body">
+        <p class="card-text">
+          <b><%= listing.title %> </b><br />
+          &#8377; <%= listing.price.toLocaleString("en-IN") %> / night
+        </p>
+      </div>
+    </div>
+    </a>
+  <% } %>
 </div>
+<!--
+</form>
+-->
+
 
 </body>
 
